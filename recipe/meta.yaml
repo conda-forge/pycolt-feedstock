@@ -1,5 +1,5 @@
 {% set name = "pycolt" %}
-{% set version = "0.5.3" %}
+{% set version = "0.6.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pycolt-{{ version }}.tar.gz
-  sha256: d1ed8b63d0cd76e8159389fcd3c1eda92fa1444160adc62eb33f34daf3bddceb
+  sha256: 0baf234160e65556477207cad09000bf360694470de1ca2aad4065aa569ef57a
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
