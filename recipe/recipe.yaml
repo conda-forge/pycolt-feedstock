@@ -1,0 +1,45 @@
+schema_version: 1
+
+context:
+  name: pycolt
+  version: "0.6.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pycolt-${{ version }}.tar.gz
+  sha256: 0baf234160e65556477207cad09000bf360694470de1ca2aad4065aa569ef57a
+
+build:
+  number: 2
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - pip
+    - pytest-runner
+    - python ${{ python_min }}.*
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+    - numpy
+
+tests:
+  - python:
+      imports:
+        - colt
+      pip_check: true
+      python_version: ${{ python_min }}
+
+about:
+  summary: Command Line Tool for Python
+  license: Apache-2.0
+  license_file: LICENSE
+  homepage: https://github.com/mfsjmenger/colt
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
